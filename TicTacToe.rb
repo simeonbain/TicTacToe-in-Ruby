@@ -24,38 +24,20 @@ class TicTacToe
       if invalid_move?(move_row, move_column) 
         puts "Invalid move! Please try again..."
         next
-<<<<<<< HEAD
       else
         make_move(move_row, move_column, piece) 
         print_gameboard
       end
 
-=======
-      end
-
-      make_move(move_row, move_column, piece) 
-      print_gameboard
-
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
       # Check the game state and respond
       game_state = update_game_state
       case game_state
       when :player_1_win
         puts "Game over. #{player_1} won!"
-<<<<<<< HEAD
       when :player_2_win
         puts "Game over. #{player_2} won!"
       when :draw
         puts "Game over. It was a draw!"
-=======
-        break
-      when :player_2_win
-        puts "Game over. #{player_2} won!"
-        break
-      when :draw
-        puts "Game over. It was a draw!"
-        break
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
       end
 
       # End turn and switch players
@@ -88,10 +70,6 @@ class TicTacToe
 
   def print_gameboard
     @gameboard.each.with_index do |row, row_index|
-<<<<<<< HEAD
-=======
-
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
       row.each.with_index do |piece, column_index|
         print piece
         print "|" unless column_index == @BOARD_SIZE - 1 
@@ -105,29 +83,20 @@ class TicTacToe
   def update_game_state
     # Check each row for win
     @gameboard.each.with_index do |row|
-<<<<<<< HEAD
       if winning_move?(row) 
-=======
-      if row_win?(row) 
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
         row[0] == @PLAYER_1_PIECE ? (return :player_1_win) : (return :player_2_win)
       end
     end
 
     # Check each column for win
     @gameboard.transpose.each do |column|
-<<<<<<< HEAD
       if winning_move?(column)
-=======
-      if column_win?(column)
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
         column[0] == @PLAYER_1_PIECE ? (return :player_1_win) : (return :player_2_win)
       end
     end
 
     # Check each diagonal for win
     left_diagonal, right_diagonal = extract_diagonals
-<<<<<<< HEAD
 
     if winning_move?(left_diagonal)
       left_diagonal[0] == @PLAYER_1_PIECE ? (return :player_1_win) : (return :player_2_win)
@@ -142,47 +111,11 @@ class TicTacToe
     :draw
   end
 
+  
   def winning_move?(arr) 
     arr.each.with_index do |piece, index|
       return false if piece == @EMPTY_POSITION
       return false if piece != arr[index+1] && index < @BOARD_SIZE - 1
-=======
-    if diagonal_win?(left_diagonal)
-      left_diagonal[0] == @PLAYER_1_PIECE ? (return :player_1_win) : (return :player_2_win)
-    elsif diagonal_win?(right_diagonal)
-      right_diagonal[0] == @PLAYER_1_PIECE ? (return :player_1_win) : (return :player_2_win)
-    end
-
-    # Check for draw
-    @gameboard.each do |row|
-      return :game_notover if row.include?(@EMPTY_POSITION)
-    end
-    return :draw
-  end
-
-  def row_win?(row) 
-    row.each.with_index do |piece, index|
-      return false if piece == @EMPTY_POSITION
-      return false if piece != row[index+1] && index < @BOARD_SIZE - 1
-    end
-
-    true
-  end
-
-  def column_win?(column) 
-    column.each.with_index do |piece, index|
-      return false if piece == @EMPTY_POSITION
-      return false if piece != column[index+1] && index < @BOARD_SIZE - 1
-    end
-
-    true
-  end
-
-  def diagonal_win?(diagonal)
-    diagonal.each.with_index do |piece, index|
-      return false if piece == @EMPTY_POSITION
-      return false if piece != diagonal[index+1] && index < @BOARD_SIZE - 1
->>>>>>> 5802fc0e5100921992c75d779561a094bb4fed1b
     end
 
     true
