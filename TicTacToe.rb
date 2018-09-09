@@ -10,6 +10,13 @@ class TicTacToe
     puts "Enter Player X's name:"
     player_2 = gets.chomp
 
+    # Print some instructions
+    puts 
+    puts "Instructions:"
+    puts "- Enter your move as two numbers (row and column) separated by a space"
+    puts "- Note: rows and column numbering starts at 0"
+    puts 
+
     # Setup the game
     print_gameboard
     turn = player_1 
